@@ -1,0 +1,7 @@
+# Site navigation links
+
+- title: Blog
+  url: /posts/
+
+- title: Feed
+  url: /feed/

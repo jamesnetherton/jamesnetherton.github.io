@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text"></title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000" />
+<updated>2014-12-05T11:10:56+00:00</updated>
+<id>http://localhost:4000/</id>
+<author>
+  <name>James Netherton</name>
+  <uri>http://localhost:4000/</uri>
+  
+</author>
+
+</feed>
