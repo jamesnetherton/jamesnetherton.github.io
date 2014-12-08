@@ -1,57 +1,32 @@
-# Site wide configuration
+# Site settings
+title:       James Netherton
+email:
+author:      James Netherton
+description: "My ramblings on software and application development."
+baseurl:     ""
+url:         "http://jamesnetherton.github.io"
 
-title:            james netherton
-locale:           en_GB
-url:              http://localhost:4000
+# Google analytics
+google_analytics:
 
+# Optional features
+animated:           true
+show_related_posts: false
+show_post_footers:  false
 
-# Jekyll configuration
+# Social icons
+show_social_icons: true
+github_username: jamesnetherton
+twitter_username: nethertron2000
+google_plus_id:
+linkedin_username:
+bitcoin_url:
+paypal_url:
+flattr_button:
 
-permalink:   /:categories/:title/
-markdown:    kramdown
-highlighter: pygments
+# Build settings
+markdown:     kramdown
+permalink:    pretty
+paginate:     3
 sass:
-  sass_dir: _sass
-  style: compressed
-gems:
-  - jekyll-sitemap
-
-kramdown:
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  use_coderay: false
-
-
-# Site owner
-owner:
-  name: James Netherton
-  avatar: https://avatars3.githubusercontent.com/u/4721408?v=3&s=460
-  bio: "My ramblings on software and technology"
-  email:
-  disqus-shortname:
-  twitter: nethertron2000
-  facebook: #username
-  google:
-    plus: #username
-    analytics:
-    verify:
-    ad-client:
-    ad-slot:
-  bing-verify:
-  github: jamesnetherton
-  stackoverflow: #http://stackoverflow.com/users/123456/username
-  linkedin: #username
-  instagram: #username
-  lastfm: #username
-  tumblr: #username
-  pinterest: #username
-  foursquare: #username
-  steam: #username
-  dribbble: #username
-  youtube: #username
-  soundcloud: #username
-
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
+  compressed: true
