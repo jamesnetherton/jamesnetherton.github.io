@@ -48,6 +48,14 @@ body {
   -webkit-box-sizing: border-box;
 }
 
+.tag {
+  background-color: #DADADA;
+  padding: .25em;
+  margin: .25em;
+  font-weight: 300;
+  color: #444;
+}
+
 .gist,
 .gist .highlight .p {
   font-size: .75rem;
