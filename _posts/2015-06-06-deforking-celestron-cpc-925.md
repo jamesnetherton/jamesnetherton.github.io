@@ -1,6 +1,6 @@
 ---
 layout:     post
-title: "Deforking A Celestron CPC 925"
+title: "Deforking a Celestron CPC 925"
 summary: "How to defork a Celestron CPC 925"
 tags: [Telescope, Celestron]
 ---
@@ -37,7 +37,7 @@ Nexstar hand control. E.g the arm that _does not_ have the silver grab handle.
 
 **1.** Remove the 4 capscrews that hold the OTA to the fork arms. There are 2 on each side.
 
-![OTA Screws](../images/otascrews.jpg)
+![OTA Screws](/images/otascrews.jpg)
 
 **2.** Remove the 6 screws holding the cover to the fork arm from the inside part of the arm (remember we're working on the arm that has the slot for the hand control holder.).
 
@@ -45,12 +45,12 @@ Nexstar hand control. E.g the arm that _does not_ have the silver grab handle.
 
 **3.** Remove the two screws at the base of the form arm within the hand grab point.
 
-![Base Screws](../images/basescrews.jpg)
+![Base Screws](/images/basescrews.jpg)
 
 **4.** Remove the small screw holding the clutch wheel in place. Then rotate the wheel anti-clockwise
 until it comes free.
 
-![Clutch Screw](../images/clutchscrew.jpg)
+![Clutch Screw](/images/clutchscrew.jpg)
 
 The fork arm cover can now be removed (watch out for grease on the motor drive mechanism).
 
@@ -65,4 +65,4 @@ I spread some soft pillows around the base of the arms just in case of mishaps.
 
 If all goes well you'll have a separated OTA like this.
 
-![Deforked CPC 925](../images/defork.jpg)
+![Deforked CPC 925](/images/defork.jpg)
