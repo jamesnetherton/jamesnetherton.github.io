@@ -1,6 +1,6 @@
 ---
 layout:     post
-title: "Deforking A Celestron CPC 925
+title: "Deforking A Celestron CPC 925"
 summary: "How to defork a Celestron CPC 925"
 tags: [Telescope, Celestron]
 ---
