@@ -43,7 +43,7 @@ Nexstar hand control. E.g the arm that _does not_ have the silver grab handle.
 
  There are 2 screws at the bottom  of the arm, 2 in the middle and 2 near the top (which are quite fiddly to get at so you may want to reposition the OTA).
 
-**3.** Remove the two screws at the base of the form arm within the hand grab point.
+**3.** Remove the two screws at the base of the fork arm within the hand grab point.
 
 ![Base Screws](/images/basescrews.jpg)
 
