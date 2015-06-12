@@ -2,7 +2,6 @@
 layout:     post
 title: "Introduction to the WildFly Camel Subsystem"
 summary: "A brief introduction to getting started with the WildFly Camel Subsystem"
-tags: [WildFly, Camel, Camel subsystem]  
 ---
 
 In case you haven't heard yet, the first release of the [Wildfly Camel Subsystem](https://github.com/wildfly-extras/wildfly-camel) has been  [announced](http://camel.465427.n5.nabble.com/Camel-subsystem-on-WildFly-td5759852.html).
