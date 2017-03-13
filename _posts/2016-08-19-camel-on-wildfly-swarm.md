@@ -2,6 +2,7 @@
 layout:     post
 title: "Camel on WildFly Swarm"
 summary: "Building Camel applications on WildFly Swarm"
+tags: [WildFly, Camel, Microservices, WildFly Swarm]
 ---
 
 Nobody working in software development will have escaped the buzz around [Microservices](https://en.wikipedia.org/wiki/Microservices) in the last 12 - 18 months.

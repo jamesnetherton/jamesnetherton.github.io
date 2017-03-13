@@ -2,6 +2,7 @@
 layout:     post
 title: "Deforking a Celestron CPC 925"
 summary: "How to defork a Celestron CPC 925"
+tags: [Telescopes]
 ---
 
 I have owned a [Celestron CPC 925](http://www.celestron.com/browse-shop/astronomy/telescopes/cpc-925-gps-%28xlt%29-computerized-telescope)

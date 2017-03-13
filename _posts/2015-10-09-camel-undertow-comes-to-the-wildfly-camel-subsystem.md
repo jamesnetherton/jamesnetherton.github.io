@@ -2,6 +2,7 @@
 layout:     post
 title: "Using the Camel Undertow component with the WildFly Camel Subsystem"
 summary: "Getting statrted with Camel Undertow and the WildFly Camel Subsystem"
+tags: [WildFly, Camel]
 ---
 
 A nice addition to the [WildFly Camel Subsystem](https://github.com/wildfly-extras/wildfly-camel) [3.1.0](https://github.com/wildfly-extras/wildfly-camel/releases/tag/3.1.0) release is the [camel-undertow](http://camel.apache.org/undertow.html) component.

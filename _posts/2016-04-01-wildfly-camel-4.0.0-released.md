@@ -2,6 +2,7 @@
 layout:     post
 title: "WildFly Camel 4.0.0 released"
 summary: "An overview of improved CXF support in WildFly Camel 4.0.0"
+tags: [WildFly, Camel]
 ---
 
 [WildFly Camel](https://github.com/wildfly-extras/wildfly-camel) [4.4.0](https://github.com/wildfly-extras/wildfly-camel/releases/tag/4.0.0) has been relased. This release is quite small compared to previous ones, but it does contain an interesting enhancement that is worthy of further explanation.

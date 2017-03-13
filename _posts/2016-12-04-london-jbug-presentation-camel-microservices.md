@@ -1,6 +1,7 @@
 ---
 layout:     post
 title: "My Camel Microservices presentation to London JBUG"
+tags: [Presentations, Microservices]
 ---
 
 Yesterday I had the pleasure of giving a talk at the [London JBoss Users Group](https://www.meetup.com/topics/jboss/gb/17/london/) on Java Microservice development
