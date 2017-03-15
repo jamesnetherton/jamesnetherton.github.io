@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div class="home">
+  <h1>Posts in tag: {{ page.slug }}</h1>
+  <div class="posts">
+    {% if site.tags[page.slug] %}
+      {% for post in site.tags[page.slug] %}
+        <div class="post">
+          <a href="{{ post.url | prepend: site.baseurl }}" class="post-link">
+            <p class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
+            <h3 class="h2 post-title">{{ post.title }}</h3>
+            <p class="post-summary">{{ post.summary }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>There are no posts in this tag.</p>
+    {% endif %}
+  </div>
+</div>

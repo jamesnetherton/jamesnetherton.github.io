@@ -29,3 +29,16 @@ permalink:    pretty
 paginate:     3
 sass:
   compressed: true
+
+collections:
+  my_tags:
+    output: true
+    permalink: /tag/:name/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: my_tags
+    values:
+      layout: tag
