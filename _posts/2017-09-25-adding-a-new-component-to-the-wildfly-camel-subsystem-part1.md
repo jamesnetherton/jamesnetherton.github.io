@@ -26,7 +26,7 @@ Note the order of dependencies is in alphabetical order. This should be preserve
 
 Next we need to create a JBoss Modules XML descriptor for the new component. We use the [Smartics JBoss Modules Maven Plugin](https://github.com/smartics/smartics-jboss-modules-maven-plugin) to help with this.
 
-Open `feature/pack/pom.xml` and create a module descriptor for the new component module.
+Open `feature/pack/etc/smartics/camel-modules.xml` and create a module descriptor for the new component module.
 
 For example, the definition for the geocoder component looks like this:
 
@@ -52,7 +52,7 @@ Here's a quick breakdown of what this all means.
 
 ##### Module name
 
-The unique name assigned to the module. This also determines the directory structure on the filesystem. E.g `org.apache.camel.component.geocoder` is translated to a path of `org/apache/camel/component/main`.
+The unique name assigned to the module. This also determines the directory structure on the filesystem. E.g `org.apache.camel.component.geocoder` is translated to a path of `org/apache/camel/component/geocoder/main`.
 
 ##### Include artifact
 
@@ -64,19 +64,21 @@ Expressions are also allowed. E.g to include all dependencies matching `camel-` 
 <include artifact="org.apache.camel:camel-(.*)"/>
 {% endhighlight %}
 
+Sometimes it makes sense to bundle resource dependencies withing the same module as the camel component JAR. Otherwise, it's best to define new module definitions for resources in `feature/pack/etc/smartics/other-modules.xml`. If possible, try to group resources into logical units.
+
 ##### apply-to-dependencies
 
-This is a block operation to apply to each module dependency. In our example we skip the dependencies defined in this block. Dependencies for `org.apache.camel.apt` and `org.springframework.boot` are skipped for all Camel component modules without exception.
+This is a block operation to apply to each module dependency. In our example we skip the dependencies defined in this block. Dependencies for `org.apache.camel.apt` and `org.springframework.boot` are skipped for all Camel component modules.
 
 ##### dependencies
 
-Other modules on which the module depends on. In our example we only need to define a dependency on org.slf4j. Sometimes you will need to define others. The Smartics Maven plugin does a good job of determining dependencies for you at build time, so you can avoid explicitly listing all of them manually.
+Other modules on which the module depends on. In our example we only need to define a dependency on `org.slf4j`. Sometimes you will need to define others. The Smartics Maven plugin does a good job of determining dependencies for you at build time, so you can avoid explicitly listing all of them manually.
 
-Note, `org.slf4j` is mandatory for all Camel component modules.
+Note, `org.slf4j` is a mandatory dependency for all Camel component modules.
 
 ##### imports / exports
 
-Sometimes you need to control what is exported onto the classpath. In our example we include a package which users will need access to but exclude others which are not required.
+Sometimes you need to control what is exported onto the classpath. In our example we include a package path which users will need access to, but also exclude others which are not required.
 
 ### 3. Registering the component
 
