@@ -68,7 +68,7 @@ Sometimes it makes sense to bundle resource dependencies withing the same module
 
 ##### apply-to-dependencies
 
-This is a block operation to apply to each module dependency. In our example we skip the dependencies defined in this block. Dependencies for `org.apache.camel.apt` and `org.springframework.boot` are skipped for all Camel component modules.
+This is a block operation to apply to each module dependency. In our example we skip the dependencies defined in this block. Dependencies for `org.apache.camel.apt` and `org.springframework.boot` are skipped for all Camel component modules as they are not required by the Camel subsystem.
 
 ##### dependencies
 

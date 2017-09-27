@@ -4,7 +4,7 @@ title: "Adding a new Camel component to the WildFly Camel subsystem. Part 2"
 tags: [WildFly,Camel]
 ---
 
-In this post we look at how we create integration tests for the WildFly Camel subsystem. In [part 1](/2017/09/25/adding-a-new-component-to-the-wildfly-camel-subsystem-part1) we got to the point where we had successfully created some JBoss Modules XML definitions. 
+In this post we look at how we create integration tests and component documentation for the WildFly Camel subsystem. In [part 1](/2017/09/25/adding-a-new-component-to-the-wildfly-camel-subsystem-part1) we got to the point where we had successfully created some JBoss Modules XML definitions.
 
 ### 1. Adding a new integration test package
 
@@ -88,7 +88,15 @@ If possible, try to test both the consumer and producer (when available). For da
 
 The aim of the test is to verify that the module definitions we created are correct and that there are no class loading problems. It's not so important to delve too deeply into testing component functionality.
 
-### 3. Finishing up
+### 3. Adding component documentation
+
+Each time a new component is added, it should be added to the [user guide](https://wildfly-extras.github.io/wildfly-camel/). The project documentation is written with [AsciiDoc](http://asciidoctor.org/). Create a new `adoc` file within `docs/guide/components`, the file name convention is `camel-<component name>.adoc`. E.g `camel-geocoder.adoc`.
+
+All that's required is a basic sentence explaining what the component does, together with a link to the Apache Camel component documentation page. We usually borrow the component description from the Apache Camel documentation to keep things simple.
+
+Finally, add a link to the new camel component `adoc` file within the table of contents in `docs/guide/components/index.adoc`.
+
+### 4. Finishing up
 
 If your tests pass, great! Run the full project test suite to verify that everything still works.
 
