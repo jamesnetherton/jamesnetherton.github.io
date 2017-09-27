@@ -98,4 +98,4 @@ $ mvn clean install -Dts.all
 
 Else you may need to adjust your module definitions, rebuild and retest.
 
-When you're done, commit all modified projects files and submit a pull request.
+When you're done, commit all modified project files and submit a pull request.
