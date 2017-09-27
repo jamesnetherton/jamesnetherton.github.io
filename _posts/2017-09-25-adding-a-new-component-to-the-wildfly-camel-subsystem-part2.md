@@ -92,7 +92,7 @@ The aim of the test is to verify that the module definitions we created are corr
 
 Each time a new component is added, it should be added to the [user guide](https://wildfly-extras.github.io/wildfly-camel/). The project documentation is written with [AsciiDoc](http://asciidoctor.org/). Create a new `adoc` file within `docs/guide/components`, the file name convention is `camel-<component name>.adoc`. E.g `camel-geocoder.adoc`.
 
-All that's required is a basic sentence explaining what the component does, together with a link to the Apache Camel component documentation page. We usually borrow the component description from the Apache Camel documentation to keep things simple.
+All that's required is a basic sentence explaining what the component does, together with a link to the Apache Camel component documentation page. We usually borrow the component description from the Apache Camel documentation to keep things simple. You can look at the other component `adoc` files for examples.
 
 Finally, add a link to the new camel component `adoc` file within the table of contents in `docs/guide/components/index.adoc`.
 
