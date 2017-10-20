@@ -18,7 +18,7 @@ First, some obvious prerequisites to get started. You'll need:
 
 ### 1. Adding the new Camel component dependency
 
-With the project cloned, edit `feature/pack/pom.xml` and add a new dependency for the component you want to integrate. 
+With the project cloned, edit `feature/modules/pom.xml` and add a new dependency for the component you want to integrate. 
 
 Note the order of dependencies is in alphabetical order. This should be preserved unless there's a good reason not to.
 
@@ -26,7 +26,7 @@ Note the order of dependencies is in alphabetical order. This should be preserve
 
 Next we need to create a JBoss Modules XML descriptor for the new component. We use the [Smartics JBoss Modules Maven Plugin](https://github.com/smartics/smartics-jboss-modules-maven-plugin) to help with this.
 
-Open `feature/pack/etc/smartics/camel-modules.xml` and create a module descriptor for the new component module.
+Open `feature/modules/etc/smartics/camel-modules.xml` and create a module descriptor for the new component module.
 
 For example, the definition for the geocoder component looks like this:
 
@@ -64,7 +64,7 @@ Expressions are also allowed. E.g to include all dependencies matching `camel-` 
 <include artifact="org.apache.camel:camel-(.*)"/>
 {% endhighlight %}
 
-Sometimes it makes sense to bundle resource dependencies withing the same module as the camel component JAR. Otherwise, it's best to define new module definitions for resources in `feature/pack/etc/smartics/other-modules.xml`. If possible, try to group resources into logical units.
+Sometimes it makes sense to bundle resource dependencies withing the same module as the camel component JAR. Otherwise, it's best to define new module definitions for resources in `feature/modules/etc/smartics/other-modules.xml`. If possible, try to group resources into logical units.
 
 ##### apply-to-dependencies
 
@@ -82,7 +82,7 @@ Sometimes you need to control what is exported onto the classpath. In our exampl
 
 ### 3. Registering the component
 
-The final task is to ensure that the WildFly Camel subsystem has access to the new component module. To do this edit `etc/managed/wildfly/modules/system/layers/fuse/org/apache/camel/component/main/module.xml`.
+The final task is to ensure that the WildFly Camel subsystem has access to the new component module. To do this edit `feature/modules/etc/managed/wildfly/modules/system/layers/fuse/org/apache/camel/component/main/module.xml`.
 
 ### 4. Finishing up
 
@@ -92,6 +92,6 @@ With the module definition created, we can generate the JBoss Modules `module.xm
 $ mvn clean install
 {% endhighlight %}
 
-When the build completes it will have generated your `module.xml` file and will have synchronized its directory structure back into the project tree at `src/main/resources/modules/system/layers/fuse`.
+When the build completes it will have generated your `module.xml` file and will have synchronized its directory structure back into the project tree at `feature/pack/src/main/resources/modules/system/layers/fuse`.
 
 In [part 2](/2017/09/25/adding-a-new-component-to-the-wildfly-camel-subsystem-part2) we'll discover how to write an integration test for our new component module.
