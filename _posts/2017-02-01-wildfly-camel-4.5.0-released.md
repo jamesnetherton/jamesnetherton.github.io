@@ -5,7 +5,7 @@ summary: "What's new in WildFly Camel 4.5.0"
 tags: [WildFly, Camel, OpenShift, Kubernetes, WildFly Swarm]
 ---
 
-[WildFly Camel](https://github.com/wildfly-extras/wildfly-camel) [4.5.0](https://github.com/wildfly-extras/wildfly-camel/releases/tag/4.5.0) has been relased. I've not
+[WildFly Camel](https://github.com/wildfly-extras/wildfly-camel) [4.5.0](https://github.com/wildfly-extras/wildfly-camel/releases/tag/4.5.0) has been released. I've not
 covered any of the significant changes to WildFly Camel since the 4.0.0 release, so it's high time I wrote an article to talk about some of them.
 
 ### Project documentation
