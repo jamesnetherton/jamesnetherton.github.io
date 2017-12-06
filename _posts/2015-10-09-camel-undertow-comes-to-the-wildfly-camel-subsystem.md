@@ -1,7 +1,7 @@
 ---
 layout:     post
 title: "Using the Camel Undertow component with the WildFly Camel Subsystem"
-summary: "Getting statrted with Camel Undertow and the WildFly Camel Subsystem"
+summary: "How to use Camel Undertow producers and consumers on WildFly"
 tags: [WildFly, Camel]
 ---
 

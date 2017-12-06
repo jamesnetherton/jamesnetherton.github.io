@@ -1,6 +1,7 @@
 ---
 layout:     post
 title: "Adding a new Camel component to the WildFly Camel subsystem. Part 1"
+summary: "How to write module descriptors for the WildFly Camel subsystem"
 tags: [WildFly,Camel]
 ---
 

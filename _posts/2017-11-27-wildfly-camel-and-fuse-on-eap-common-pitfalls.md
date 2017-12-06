@@ -1,6 +1,7 @@
 ---
 layout:     post
 title: "WildFly Camel and Fuse on EAP - Common Pitfalls"
+summary: "Solutions for some common Camel Subsystem problems"
 tags: [WildFly,Camel,JBoss Fuse,EAP]
 ---
 
@@ -17,7 +18,7 @@ First, a quick refresher on WildFly / EAP class loading fundamentals. The contai
 
 The Camel subsystem organizes Camel functionality into individual modules. In fact, there's a module for each supported Camel component. 
 
-When you deploy a 'fat' WAR Camel application into the container, classes from libraries within `WEB-INF/lib` are loaded by the deployment class loader. If your deployment happens to activate the Camel subsystem, it will [automatically](https://github.com/wildfly-extras/wildfly-camel/blob/4.9.0/subsystem/core/src/main/java/org/wildfly/extension/camel/deployment/CamelDependenciesProcessor.java) expose Camel (and many other other) packages to the deployment class loader.
+When you deploy a 'fat' WAR Camel application into the container, classes from libraries within `WEB-INF/lib` are loaded by the deployment class loader. If your deployment happens to activate the Camel subsystem, it will [automatically](https://github.com/wildfly-extras/wildfly-camel/blob/4.9.0/subsystem/core/src/main/java/org/wildfly/extension/camel/deployment/CamelDependenciesProcessor.java) expose Camel (and many other) packages to the deployment class loader.
 
 As things turn out, the container does a pretty good job in preventing class loading issues which can result from this scenario. But, there's still no guarantee that your application will function 100% correctly.
 

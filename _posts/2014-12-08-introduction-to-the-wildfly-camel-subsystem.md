@@ -1,7 +1,7 @@
 ---
 layout:     post
 title: "Introduction to the WildFly Camel Subsystem"
-summary: "A brief introduction to getting started with the WildFly Camel Subsystem"
+summary: "How to develop applications for the WildFly Camel Subsystem"
 tags: [WildFly, Camel]
 ---
 

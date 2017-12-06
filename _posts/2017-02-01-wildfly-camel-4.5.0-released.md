@@ -1,7 +1,7 @@
 ---
 layout:     post
 title: "WildFly Camel 4.5.0 released"
-summary: "What's new in WildFly Camel 4.5.0"
+summary: "An overview of what's new in the 4.5.0 release"
 tags: [WildFly, Camel, OpenShift, Kubernetes, WildFly Swarm]
 ---
 
