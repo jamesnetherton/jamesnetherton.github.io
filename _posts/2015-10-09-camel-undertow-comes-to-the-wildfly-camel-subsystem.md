@@ -24,7 +24,7 @@ from("undertow://localhost:7766/foo/bar")
 This configuration starts an embedded Undertow server on localhost bound to port 7766.
 
 For WildFly Camel, this would not be allowed. Since WildFly is already running an Undertow HTTP engine,
-it makes sense to resuse this, rather than create a new Undertow instance. This has advantages such as being able to take advantage of WildFly's native security mechanisms, graceful shutdown etc.
+it makes sense to reuse this, rather than create a new Undertow instance. This has advantages such as being able to take advantage of WildFly's native security mechanisms, graceful shutdown etc.
 
 Therefore, we are restricted to consuming from
 the port that has been configured within the WildFly socket-binding configuration (usually 8080).

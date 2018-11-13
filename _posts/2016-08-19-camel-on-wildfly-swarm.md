@@ -8,11 +8,9 @@ tags: [WildFly, Camel, Microservices, WildFly Swarm]
 Nobody working in software development will have escaped the buzz around [Microservices](https://en.wikipedia.org/wiki/Microservices) in the last 12 - 18 months.
 Various frameworks have appeared for Java, one of the most popular being [Spring Boot](https://projects.spring.io/spring-boot/).
 
-Spring Boot takes an approach of enabling developers to pick and choose which components they need for their app via 'starter' dependencies, and then packaging everthing
-into a runnable 'fat' JAR (or WAR if need be). This is advantagous for build and deployment via CI / CD pipelines into containerised platforms.
+Spring Boot takes an approach of enabling developers to pick and choose which components they need for their app via 'starter' dependencies, and then packaging everything into a runnable 'fat' JAR (or WAR if need be). This is advantageous for build and deployment via CI / CD pipelines into containerised platforms.
 
-So what tools exist to achieve similar things with JavaEE? Enter [WildFly Swarm](https://github.com/wildfly-swarm/wildfly-swarm/). WildFly Swarm builds on top of the WildFly
-container and lets you 'rightsize' your JavaEE apps by giving you the option to pick and choose what components of the app server you want to include. In a classic WildFly JavaEE app server installation you'll have the some (or more) of following subsystems available:
+So what tools exist to achieve similar things with JavaEE? Enter [WildFly Swarm](https://github.com/wildfly-swarm/wildfly-swarm/). WildFly Swarm builds on top of the WildFly container and lets you 'rightsize' your JavaEE apps by giving you the option to pick and choose what components of the app server you want to include. In a classic WildFly JavaEE app server installation you'll have the some (or more) of following subsystems available:
 
 * CDI
 * EJB
@@ -21,10 +19,7 @@ container and lets you 'rightsize' your JavaEE apps by giving you the option to 
 * Mail
 * Messaging
 
-In a Microservice, you may not need all of these services, so it makes little sense to include them within the packaged application. WildFly Swarm deals with this problem
-via [fractions](https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/8cca257df347646706d7967e93f0588bc75681a9/getting-started/concepts.html). So if I need
-Jolokia, I simply include the Jolokia fraction dependency. If I need to use REST via JAX-RS, then I include the Swarm JAX-RS fraction. WildFly broken down into small
-discrete functional pieces!
+In a Microservice, you may not need all of these services, so it makes little sense to include them within the packaged application. WildFly Swarm deals with this problem via [fractions](https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/v/8cca257df347646706d7967e93f0588bc75681a9/getting-started/concepts.html). So if I need Jolokia, I simply include the Jolokia fraction dependency. If I need to use REST via JAX-RS, then I include the Swarm JAX-RS fraction. WildFly broken down into small discrete functional pieces!
 
 ### WildFly Swarm Camel applications
 
@@ -42,11 +37,11 @@ the following fractions are available:
 * camel-other
 * camel-undertow
 
-camel-other is an unforntuately named 'catch all' bucket for components that are not featured in the above list. Over time the plan is to have individual fractions for each supported Camel component.
+camel-other is an unfortunately named 'catch all' bucket for components that are not featured in the above list. Over time the plan is to have individual fractions for each supported Camel component.
 
 ### Example Camel WildFly Swarm application
 
-This example demonstrates using the Camel CDI and Undertow compoments on WildFly Swarm.
+This example demonstrates using the Camel CDI and Undertow components on WildFly Swarm.
 
 #### WildFly Swarm generator
 

@@ -26,9 +26,9 @@ Adoption of development on [Kubernetes](https://kubernetes.io/) and [OpenShift](
 
 More details can be found [here](http://wildfly-extras.github.io/wildfly-camel/#_source_to_image).
 
-### Eclipse Che workspaces
+### Eclipse Che Workspace
 
-A quick way of getting started with WildFly Camel development is via our [Eclipse Che workspaces](https://beta.codenvy.com/f?id=chknwakr0ykhqr1q). Follow the link and you'll be able to work on example projects.
+A quick way of getting started with WildFly Camel development is via our [Eclipse Che Workspace](https://beta.codenvy.com/f?id=chknwakr0ykhqr1q). Follow the link and you'll be able to work on example projects.
 
 ### Camel on WildFly Swarm
 

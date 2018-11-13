@@ -111,7 +111,7 @@ To start up a container do:
 
 To deploy applications you can use the WildFly CLI, the administration web console or create your own Docker image to extend wildflyext/wildfly-camel (E.g using 'FROM' in your Dockerfile).
 
-To access the administration console and hawtio, you'll need to create management and application users. You can do this by running the add-user.sh script on a running WildFly container:
+To access the administration console and Hawtio, you'll need to create management and application users. You can do this by running the add-user.sh script on a running WildFly container:
 
 {% highlight bash %}
     docker exec -ti wildfly-camel /opt/jboss/wildfly/bin/add-user.sh

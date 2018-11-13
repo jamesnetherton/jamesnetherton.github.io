@@ -5,7 +5,7 @@ summary: "An overview of improved CXF support in WildFly Camel 4.0.0"
 tags: [WildFly, Camel]
 ---
 
-[WildFly Camel](https://github.com/wildfly-extras/wildfly-camel) [4.0.0](https://github.com/wildfly-extras/wildfly-camel/releases/tag/4.0.0) has been relased. This release is quite small compared to previous ones, but it does contain an interesting enhancement that is worthy of further explanation.
+[WildFly Camel](https://github.com/wildfly-extras/wildfly-camel) [4.0.0](https://github.com/wildfly-extras/wildfly-camel/releases/tag/4.0.0) has been released. This release is quite small compared to previous ones, but it does contain an interesting enhancement that is worthy of further explanation.
 
 ### The state of WildFly Camel and Camel CXF
 
@@ -50,7 +50,7 @@ To demonstrate the CXF-WS consumer, I'll be using Spring to specify the Camel ro
 {% endhighlight %}
 
 When the application is deployed, it will expose a JAX-WS endpoint at [http://localhost:8080/webservices/greeting](http://localhost:8080/webservices/greeting). You
-can verify that the expoint is available by viewing the endpoint WSDL. Open the following URL in a web browser:
+can verify that the endpoint is available by viewing the endpoint WSDL. Open the following URL in a web browser:
 
 [http://localhost:8080/webservices/greeting?wsdl](http://localhost:8080/webservices/greeting?wsdl)
 

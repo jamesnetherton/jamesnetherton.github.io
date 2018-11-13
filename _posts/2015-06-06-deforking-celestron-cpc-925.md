@@ -13,7 +13,7 @@ Not being the biggest or strongest bloke in the world, it's become a chore to ca
 down from upstairs. The law of averages dictate that one day I will trip and end up in a broken heap with the scope on top of me ;-).
 
 I decided to bite the bullet and defork the OTA for mounting on a GEM. There didn't seem to be too much information available for this
-specific scope, so this is my expierence of the process.
+specific scope, so this is my experience of the process.
 
 ## You will need
 
