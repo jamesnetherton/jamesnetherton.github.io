@@ -1,6 +1,7 @@
 ---
 layout:     post
 title: "My Camel Microservices presentation to London JBUG"
+summary: "Running Camel Microservices on Kubernetes & OpenShift"
 tags: [Presentations, Microservices]
 ---
 

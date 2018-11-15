@@ -1,6 +1,7 @@
 ---
 layout:     post
 title: "WildFly Camel Source To Image Builds"
+summary: "An introduction to S2I builds with the WildFly Camel project"
 tags: [WildFly, Camel, OpenShift]
 ---
 
