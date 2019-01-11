@@ -5,7 +5,7 @@ summary: "How to defork a Celestron CPC 925"
 tags: [Telescopes]
 ---
 
-I have owned a [Celestron CPC 925](http://www.celestron.com/browse-shop/astronomy/telescopes/cpc-925-gps-%28xlt%29-computerized-telescope)
+I have owned a [Celestron CPC 925](https://www.celestron.com/products/cpc-925-gps-xlt-computerized-telescope)
 for some time. It's a great scope and good value for money. Over time, the only real negative for me has been the unwieldiness of the scope and fork arm
 assembly.
 
@@ -18,7 +18,7 @@ specific scope, so this is my experience of the process.
 ## You will need
 
 * A clean and stable area to work on the scope
-* A set of [hex keys](http://en.wikipedia.org/wiki/Hex_key) or hex screwdriver(s). I used [this](https://www.stanleytools.co.uk/product/147260).
+* A set of [hex keys](http://en.wikipedia.org/wiki/Hex_key) or hex screwdriver(s)
 * Something to shift stubborn screws like [WD-40](http://wd40.com/)
 * Patience!
 
