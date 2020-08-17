@@ -19,7 +19,7 @@ Camel Quarkus provides Quarkus [extensions](https://quarkus.io/guides/writing-ex
 
 Camel Quarkus also takes advantage of the many performance improvements made in Camel 3, which results in a lower memory footprint, less reliance on reflection (which is good for native application support) and faster startup times. 
 
-This makes the project perfect for use in the serverless world. [Camel K](https://camel.apache.org/camel-k/latest) will use Camel Quarkus as its default runtime.
+You can define Camel routes using the Java DSL, XML & Kotlin.
 
 ## Features
 
@@ -49,12 +49,6 @@ Quarkus provides extensions for libraries and frameworks that are used by some c
 
 ### Observability
 
-Camel Quarkus integrates with many of the existing features provided by Quarkus. Observability is no exception.
-
-There's an example project demonstrating the features mentioned below here:
-
-[https://github.com/apache/camel-quarkus/tree/master/examples/observability](https://github.com/apache/camel-quarkus/tree/master/examples/observability)
-
 #### Health & liveness checks
 
 Health & liveness checks can be configured via the [Camel Health](https://camel.apache.org/manual/latest/health-check.html) API or via [Quarkus MicroProfile Health](https://quarkus.io/guides/microprofile-health).
@@ -73,15 +67,19 @@ There's an example project which demonstrates health checks:
 
 #### Metrics
 
-Camel provides a [MicroProfile Metrics component](https://camel.apache.org/components/latest/microprofile-metrics-component.html) which integrates with [Quarkus MicroProfile Metrics](https://quarkus.io/guides/microprofile-metrics). Some basic Camel metrics are provided for you out of the box and you can supplement these with configuring additional metrics in your routes.
+Camel provides a [MicroProfile Metrics component](https://camel.apache.org/components/latest/microprofile-metrics-component.html) which is used to integrate with [Quarkus MicroProfile Metrics](https://quarkus.io/guides/microprofile-metrics). Some basic Camel metrics are provided for you out of the box, and these can be supplemented by configuring additional metrics in your routes.
 
-All of the metrics are available on the standard MicroProfile metrics endpoint:
+Metrics are available on the standard MicroProfile metrics endpoint:
 
 [http://localhost:8080/metrics](http://localhost:8080/metrics)
 
 #### Tracing
 
-Camel Quarkus integrates with the Quarkus [OpenTracing extension](https://quarkus.io/guides/opentracing). All you need to do is set up the required [configuration](https://quarkus.io/guides/opentracing#create-the-configuration) properties and Camel Quarkus will automatically wire up an `OpenTracingTracer` for your application to use.
+Camel Quarkus integrates with the Quarkus [OpenTracing extension](https://quarkus.io/guides/opentracing). All you need to do is set up the required [configuration](https://quarkus.io/guides/opentracing#create-the-configuration) properties and an `OpenTracingTracer` will get automatically added to the registry for Camel to use.
+
+There's an example project demonstrating the above features here:
+
+[https://github.com/apache/camel-quarkus/tree/master/examples/observability](https://github.com/apache/camel-quarkus/tree/master/examples/observability)
 
 ## What if there's no extension for my favourite Camel component?
 
@@ -201,7 +199,11 @@ We only scratched the surface of what's possible with Camel Quarkus. Some other 
 
 Hopefully that was a nice overview of what Camel Quarkus has to offer. More component extensions & features will be added in future releases.
 
-If you'd like to contribute, check out the source code:
+If you have feedback or you'd like to contribute, check out the contributors guide:
+
+[https://camel.apache.org/camel-quarkus/latest/contributor-guide/index.html](https://camel.apache.org/camel-quarkus/latest/contributor-guide/index.html)
+
+The source code is available on GitHub:
 
 [https://github.com/apache/camel-quarkus](https://github.com/apache/camel-quarkus)
 
