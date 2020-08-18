@@ -11,7 +11,7 @@ Since I've been contributing to the project for the past months, I thought it'd 
 
 ## Camel Quarkus Project
 
-The Camel Quarkus project aims to bring the awesome integration capabilities of [Apache Camel](https://camel.apache.org) and it's vast component library to the [Quarkus](https://quarkus.io/) runtime.
+The Camel Quarkus project aims to bring the awesome integration capabilities of [Apache Camel](https://camel.apache.org) and its vast component library to the [Quarkus](https://quarkus.io/) runtime.
 
 This enables users to take advantage of the performance benefits, [developer joy](https://quarkus.io/vision/developer-joy) and the [container first ethos](https://quarkus.io/vision/container-first) that Quarkus provides.
 
