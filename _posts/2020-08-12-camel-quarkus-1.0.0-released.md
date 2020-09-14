@@ -207,9 +207,9 @@ The source code is available on GitHub:
 
 [https://github.com/apache/camel-quarkus](https://github.com/apache/camel-quarkus)
 
-The Camel Quarkus team is on Gitter for chat:
+The Camel Quarkus team is on Zulip for chat:
 
-[https://gitter.im/apache/camel-quarkus](https://gitter.im/apache/camel-quarkus)
+[https://camel.zulipchat.com](https://camel.zulipchat.com)
 
 We also lurk in the Quarkus Zulip room:
 
