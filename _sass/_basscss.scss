@@ -767,3 +767,11 @@ a:hover {
 .transition-all {
   transition: all .2s ease;
 }
+
+figure.highlight {
+  margin: 0;
+}
+
+article > blockquote {
+  margin: 0;
+}
