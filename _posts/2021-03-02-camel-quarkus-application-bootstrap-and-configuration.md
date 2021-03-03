@@ -118,7 +118,7 @@ public ConnectionFactory connectionFactory() {
 }
 {% endhighlight %}
 
-Since the ConnectionFactory bean is neither `@Name`d or `@Inject`ed anywhere in application, Quarkus considers it a candidate for removal. When Camel attempts to look up the bean in the registry, it wont find anything.
+Since the ConnectionFactory bean is neither `@Name`d or `@Inject`ed anywhere in the application, Quarkus considers it a candidate for removal. When Camel attempts to look up the bean in the registry, it wont find anything.
 
 The solution is to annotate the producer method with `@Unremovable` or `@Named`. Or you can disable bean removal entirely.
 
