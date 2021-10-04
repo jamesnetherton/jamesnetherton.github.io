@@ -122,6 +122,8 @@ Since the ConnectionFactory bean is neither `@Name`d or `@Inject`ed anywhere in 
 
 The solution is to annotate the producer method with `@Unremovable` or `@Named`. Or you can disable bean removal entirely.
 
+> NOTE: Since Camel Quarkus 2.1.0, explicitly annotating beans bound for Camel registry lookups with `@Unremovable` is no longer required. Camel Quarkus automatically marks types required by Camel components as unremovable.
+
 ### Configuration with XML
 
 It's possible to create routes using [XML](https://camel.apache.org/camel-quarkus/latest/user-guide/bootstrap.html#_xml_configuration) like this. If you need to reference beans or processors, then you can use CDI to create them and refer to their name in the route XML.
