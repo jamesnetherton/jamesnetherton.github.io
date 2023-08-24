@@ -1,4 +1,0 @@
----
-slug: WildFly
-name: WildFly
----

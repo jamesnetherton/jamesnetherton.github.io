@@ -1,4 +1,0 @@
----
-slug: Hawtio
-name: Hawtio
----

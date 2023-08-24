@@ -1,4 +1,0 @@
----
-slug: Quarkus
-name: Quarkus
----

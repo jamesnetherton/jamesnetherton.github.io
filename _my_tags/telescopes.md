@@ -1,4 +1,0 @@
----
-slug: Telescopes
-name: Telescopes
----

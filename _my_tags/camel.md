@@ -1,4 +1,0 @@
----
-slug: Camel
-name: Camel
----

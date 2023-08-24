@@ -1,4 +1,0 @@
----
-slug: Kubernetes
-name: Kubernetes
----
