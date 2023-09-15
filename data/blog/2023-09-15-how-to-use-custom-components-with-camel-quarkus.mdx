@@ -1,0 +1,113 @@
+---
+title: Using custom Camel components with Camel Quarkus
+date: '2023-09-15'
+summary: How to use custom or third party Apache Camel components with Camel Quarkus
+tags: ['Camel', 'Quarkus']
+---
+
+Sometimes you may want to use custom or third party Apache Camel components in your Camel Quarkus project.
+
+If you add the component dependency to your project, you may find that when trying to use its endpoints that you encounter
+`FailedToCreateRouteException`, as your custom endpoint could not be found.
+
+Fear not! The resolution is (usually) quite simple. Your custom component requires a [Jandex](https://github.com/smallrye/jandex/) index so that
+Camel Quarkus can discover it and work its build time optimization magic.
+
+## Indexing your component
+
+Some options to index your component are as follows.
+
+### 1. Maven plugins
+
+You can create a Jandex index for your component JAR with the `camel-component-maven-plugin`.
+
+```xml
+<plugin>
+  <groupId>org.apache.camel</groupId>
+  <artifactId>camel-component-maven-plugin</artifactId>
+  <version>${camel.version}</version>
+  <executions>
+    <execution>
+      <id>generate</id>
+      <goals>
+        <goal>generate</goal>
+      </goals>
+      <phase>process-classes</phase>
+    </execution>
+   </executions>
+</plugin>
+```
+
+The `generate` goal will create a Jandex index automatically. There's more information about the plugin in the [documentation](https://camel.apache.org/manual/camel-component-maven-plugin.html).
+
+Alternatively, you can use the `jandex-maven-plugin` instead.
+
+```xml
+<plugin>
+    <groupId>io.smallrye</groupId>
+    <artifactId>jandex-maven-plugin</artifactId>
+    <version>${jandex.version}</version>
+    <executions>
+        <execution>
+            <id>make-index</id>
+            <goals>
+                <goal>jandex</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
+
+### 2. Quarkus automatic Jandex indexing
+
+If you cannot modify the component project to add Jandex indexing, then Quarkus can do it for you on-the-fly with some
+additional configuration in `application.properties`.
+
+Replace `my-custom-component` with the Maven `artifactId` of your component.
+
+```
+quarkus.index-dependency.my-custom-component.group-id=org.acme
+quarkus.index-dependency.my-custom-component.artifact-id=my-custom-component
+```
+
+### 3. Custom Quarkus extension
+
+Unless you specifically want to target native mode compatibility for your component or generally want to make use of Quarkus build time optimizations, then one of the
+above two options should suffice.
+
+Otherwise, you can create a custom Quarkus extension for your component. The process for creating an extension is covered extensively in the Quarkus [Writing Extensions Guide](https://quarkus.io/guides/writing-extensions).
+
+## Other potential problems
+
+### Camel service discovery
+
+I mentioned above that a missing Jandex index is usually the cause of custom components not working on Camel Quarkus. Another potential issue is
+if the component makes use of Camel service discovery. E.g if there are some custom services defined under `META-INF/services/org/apache/camel`.
+
+The core set of
+services automatically included by default are defined [here](https://github.com/apache/camel-quarkus/blob/main/extensions-core/core/deployment/src/main/java/org/apache/camel/quarkus/core/deployment/CamelProcessor.java#L150).
+If your component uses a service not covered by those paths, then you'll need to add some additional configuration to your application.
+
+For example, if you had a custom service defined under `META-INF/services/org/apache/camel/my-custom`, then you can add the following to `application.properties`.
+
+```
+quarkus.camel.service.discovery.include-patterns = META-INF/services/org/apache/camel/my-custom/*
+```
+
+### Native mode compilation / runtime issues
+
+If you choose to compile your application to a native executable, you may find that your component does not work as expected. The native compilation may fail, or you may encounter
+problems at runtime.
+
+Some typical failures are due to classes that need to be registered for reflection. For that, you can use the `quarkus.camel.native.reflection.include-patterns` configuration property. Or if the
+component is loading resources from the classpath, those resources need to be embedded within the native application. To do that, you can use the `quarkus.native.resources.includes`
+configuration property.
+
+More complex native mode issues may require you to consider [writing a Quarkus extension](https://quarkus.io/guides/writing-extensions). for your component.
+
+## Conclusion
+
+Hopefully this brief overview helps to get your custom component working with Camel Quarkus. Feel free to [contact](https://github.com/apache/camel-quarkus/issues/new/choose) the
+Camel Quarkus team with any issues and we'll try to resolve them.
+
+Happy coding!
