@@ -1,0 +1,115 @@
+---
+title: Loading Java DSL routes from external JARs on Camel Quarkus
+date: '2024-07-24'
+summary: How to have Java DSL routes loaded from exeternal JARs on Camel Quarkus
+tags: ['Camel', 'Quarkus']
+---
+
+A common pattern when writing Camel applications is to have route configurations spread across one or more dependencies added to the application.
+For the Camel Java DSL, Camel Quarkus can discover `RouteBuilder` implementations at build time and automatically configure them for the `CamelContext`.
+
+For example, consider a multi-module Maven project like this.
+
+```
+├── my-application
+│   ├── pom.xml
+│   └── src
+│       └── main
+│           └── java
+│               └── org
+│                   └── acme
+│                       └── RoutesA.java
+├── module-b
+│   └── src
+│       └── main
+│           └── java
+│               └── org
+│                   └── acme
+│                       └── RoutesB.java
+└── module-c
+    └── src
+        └── main
+            └── java
+                └── org
+                    └── acme
+                        └── RoutesC.java
+````
+
+`my-application/pom.xml` has these dependencies defined.
+
+```xml
+<dependency>
+    <groupId>org.acme</groupId>
+    <artifactId>module-b</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.acme</groupId>
+    <artifactId>module-c</artifactId>
+</dependency>
+````
+
+You might expect that when running `my-application`, that the routes from `RoutesB.java` and `RoutesC.java` will be started.
+
+However, this wont be the case. In order for those route classes to be discovered, the `module-b` and `module-c` JARs must contain a Jandex index.
+
+Thankfully, this is a simple task that can achieved via any of the following methods.
+
+#### 1. jandex-maven-plugin
+
+Add the following to your Maven module `pom.xml` to create a Jandex index.
+
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>io.smallrye</groupId>
+      <artifactId>jandex-maven-plugin</artifactId>
+      <version>3.2.0</version>
+      <executions>
+        <execution>
+          <id>make-index</id>
+          <goals>
+            <goal>jandex</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
+#### 2. Empty beans.xml
+
+Simply run the following to create an empty `beans.xml` file in your Maven module.
+
+```
+mkdir -p src/main/resources/META-INF
+touch src/main/resources/META-INF/beans.xml
+```
+
+#### 3. Quarkus configuration
+
+In `application.properties` add.
+
+```
+# Index all dependencies with the Maven groupId of org.acme
+quarkus.index-dependency.acme.group-id=org.acme
+```
+
+### Conclusion
+
+This brief summary hopefully helps to clear up any confusion when routes from external dependencies are not started in your application.
+
+There's more information about Jandex here.
+
+https://smallrye.io/jandex
+
+There's more information about Quarkus dependency indexing strategies here.
+
+https://quarkus.io/guides/cdi-reference#bean_discovery
+
+Finally, you can find more information about Camel Quarkus route configuration here.
+
+https://camel.apache.org/camel-quarkus/next/user-guide/defining-camel-routes.html
+
+Happy coding!
