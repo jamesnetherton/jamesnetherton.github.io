@@ -1,0 +1,137 @@
+---
+title: Manage and monitor Camel Quarkus applications with Jolokia
+date: '2025-03-26'
+summary: An introduction to the Camel Quarkus Jolokia extension
+tags: ['Camel', 'Quarkus']
+---
+
+The [Jolokia](https://jolokia.org/) extension was introduced in Camel Quarkus 3.19.0, initially only with JVM mode. In 3.20.0, it now comes with native mode support.
+
+Similar to its [Camel Spring Boot starter counterpart](https://github.com/apache/camel-spring-boot/blob/main/components-starter/camel-jolokia-starter/src/main/docs/jolokia.adoc), it enables Camel Quarkus applications to be remotely managed and monitored using [Hawtio](https://hawt.io/).
+
+If you're unfamiliar with Jolokia, it's an JMX-HTTP bridge allowing applications to read JMX MBean attributes, invoke operations etc over HTTP.
+
+## Getting started
+
+The first step is to add the `camel-quarkus-jolokia` dependency to your application.
+
+```xml
+<dependency>
+  <groupId>org.apache.camel.quarkus</groupId>
+  <artifactId>camel-quarkus-jolokia</artifactId>
+</dependency>
+```
+
+To test it, run the development mode.
+
+```
+mvn clean quarkus:dev
+````
+
+In a separate terminal session, interact with the Jolokia HTTP endpoint. Note, if you do not have `jq` installed then simply remove it from the command below.
+
+```
+curl localhost:8778/jolokia/ | jq
+```
+
+You'll see a JSON response with some basic information about the Jolokia configuration.
+
+The Jolokia endpoint is also available as a Quarkus management endpoint under the `/q` context path.
+
+```
+curl -L localhost:8778/q/jolokia | jq
+```
+
+## Hawtio
+
+[Hawtio](https://hawt.io/) is a modular web console for managing Java applications. It has great support for Camel, so lets harness its power to manage a simple Camel Quarkus demo.
+
+The source code for the demo application can be found at the following location.
+
+https://github.com/jamesnetherton/camel-quarkus-demos/jolokia
+
+Start the application in development mode.
+
+```
+mvn clean quarkus:dev
+```
+
+Next start Hawtio. There's a few [different ways of doing this](https://hawt.io/docs/get-started.html). I find it simplest to use [JBang](https://www.jbang.dev/).
+
+```
+jbang app install hawtio@hawtio/hawtio
+hawtio --port=8085
+```
+
+A browser window will open and the Hawtio connect page will be displayed. Click the 'Discover' button and connect to the `camel-quarkus-jolokia-demo` application.
+
+![hawtio-discovery](/static/images/hawtio-discovery.png)
+
+
+You'll now be able to view details about the running application.
+
+![hawtio-camel-route](/static/images/hawtio-camel-route.png)
+
+You can also package and run the application in JVM mode via the runnable JAR.
+
+```
+mvn clean package
+java -jar target/quarkus-app/quarkus-run.jar
+```
+
+<div class="p-4 mb-4 border-l-4 rounded-lg bg-blue-50 border-blue-500 text-blue-700 dark:bg-blue-900 dark:border-blue-400 dark:text-blue-100">
+  <p><strong>NOTE:</strong> Hawtio also has a dedicated [Quarkus dependency](https://hawt.io/docs/get-started.html#_running_a_quarkus_app) where its UI and Jolokia endpoint are embedded within the application. Unlike this example where we use Hawtio to connect to an external Jolokia endpoint.</p>
+</div>
+
+## Native mode
+
+In addition to above, it's possible to have Jolokia working in native mode and Hawtio can connect to a native application!
+
+First, package and run the native application.
+
+```
+mvn clean package -Dnative
+target/*-runner
+```
+
+Next connect to the application with Hawtio as per the instructions above. There are a few limitation with JMX in native mode which are documented.
+
+## Camel Quarkus with Hawtio on Kubernetes & OpenShift
+
+If you deploy your Camel Quarkus applications on Kubernetes or OpenShift, then Camel Quarkus & Hawtio has you covered. By installing [Hawtio Online](https://github.com/hawtio/hawtio-online), you can view and connect to any Camel Quarkus application where Jolokia is present.
+
+On OpenShift, there is a 'one click' install of Hawtio via OperatorHub.
+
+![hawtio-online-operator](/static/images/hawtio-online-operator.png)
+
+Or alternatively, follow the instructions in the [documentation](https://hawt.io/docs/online/openshift.html).
+
+For Kubernetes, follow the instructions in the Hawtio Online [documentation](https://hawt.io/docs/online/kubernetes.html).
+
+With Hawtio Online installed, you can visit its home page. On OpenShift you can get the URL with `oc get route hawtio-online`.
+
+When there are no applications deployed, the initial view will be empty. We'll change that by deploying the demo application to the cluster.
+
+```
+mvn clean package -DskipTests -Dquarkus.Kubernetes.deploy=true
+```
+
+Eventually, after the application is deploy successfully, it should be listed in the Hawtio Online application listing. Click 'Connect' to start managing the application.
+
+![hawtio-online-app](/static/images/hawtio-online-app.png)
+
+## Other MBean domains
+
+To widen the site of MBeans that are available to Jolokia, you can override the default list with your own by adding a configuration property to `application.properties`.
+
+```
+quarkus.camel.jolokia.camel-restrictor-allowed-mbean-domains=org.apache.camel,my.package,my.other.package
+```
+
+## Conclusion
+
+Hopefully this brief overview of the Camel `camel-quarkus-jolokia` is helpful in showing how some of the basic functionality works.
+
+Check out the [extension documentation](https://camel.apache.org/camel-quarkus/next/reference/extensions/jolokia.html) for more information.
+
+Happy coding!
