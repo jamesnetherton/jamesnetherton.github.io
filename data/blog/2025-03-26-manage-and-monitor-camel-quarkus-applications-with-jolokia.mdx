@@ -36,12 +36,6 @@ curl localhost:8778/jolokia/ | jq
 
 You'll see a JSON response with some basic information about the Jolokia configuration.
 
-The Jolokia endpoint is also available as a Quarkus management endpoint under the `/q` context path.
-
-```
-curl -L localhost:8778/q/jolokia | jq
-```
-
 ## Hawtio
 
 [Hawtio](https://hawt.io/) is a modular web console for managing Java applications. It has great support for Camel, so lets harness its power to manage a simple Camel Quarkus demo.
