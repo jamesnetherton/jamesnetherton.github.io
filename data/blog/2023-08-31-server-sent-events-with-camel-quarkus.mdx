@@ -7,7 +7,7 @@ tags: ['Camel', 'Quarkus']
 
 A topic that occasionally comes up from Apache Camel users, is how to work with [Server-Sent Events](https://html.spec.whatwg.org/multipage/server-sent-events.html) (SSE) in a Camel application.
 
-At present, there is no dedicated SSE Camel component, so upvote [CAMEL-16431](https://issues.apache.org/jira/browse/CAMEL-16431) if your're interested. However, frameworks like Quarkus
+At present, there is no dedicated SSE Camel component, so upvote [CAMEL-16431](https://issues.apache.org/jira/browse/CAMEL-16431) if you're interested. However, frameworks like Quarkus
 and Spring Boot provide SSE functionality that can be used in conjunction with Camel.
 
 Here's an example of a Camel Quarkus application that will publish the exchange message body flowing through a Camel route as an SSE.
@@ -21,6 +21,7 @@ We'll be using the following Quarkus extensions for the backend:
 * [Quarkus RESTEasy Reactive Jackson](https://quarkus.io/guides/resteasy-reactive) for SSE and JSON serialization support
 * [SmallRye Reactive Messaging Camel](https://camel.apache.org/camel-quarkus/next/reference/extensions/smallrye-reactive-messaging.html) for Apache Camel to Reactive Messaging support
 * [Camel Quarkus Timer](https://camel.apache.org/camel-quarkus/next/reference/extensions/timer.html) to periodically trigger metrics collection
+* [Camel Quarkus Micrometer](https://camel.apache.org/camel-quarkus/next/reference/extensions/micrometer.html) for runtime metrics
 
 For the frontend, we'll keep things simple with some basic HTML, CSS and some JavaScript to handle SSE messages. Charting is provided by [Chart.js](https://www.chartjs.org).
 
@@ -63,16 +64,21 @@ Finally, the message is routed to a Reactive Streams channel named `runtime-metr
 
 ## Metrics Service
 
-`MetricsService` obtains metrics from the JMX `OperatingSystem` MBean. For example, to get the system CPU usage.
+`MetricsService` obtains metrics from the Micrometer `MeterRegistry`. For example, to get the system CPU usage.
 
 ```java
 @Singleton
 public class MetricsService {
-    private static final String OPERATING_SYSTEM_MBEAN = "java.lang:type=OperatingSystem";
+    @Inject
+    MeterRegistry meterRegistry;
 
-    String getSystemCpuUsage() {
-        double value = getMBeanAttribute(OPERATING_SYSTEM_MBEAN, "SystemCpuLoad", Double.class);
-        return String.format("%.2f", value * 100);
+    double getSystemCpuUsage() {
+        Gauge gauge = meterRegistry.find("system.cpu.usage").gauge();
+        if (gauge == null) {
+            return 0.0;
+        }
+        double cpuPercent = gauge.value() * 100;
+        return Math.round(cpuPercent * 100.0) / 100.0;
     }
 }
 ```
